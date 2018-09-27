@@ -25,7 +25,8 @@ passport.use(
     {
       clientID: facebookID,
       clientSecret: facebookSecret,
-      callbackURL: "/auth/facebook/callback"
+      callbackURL: "/auth/facebook/callback",
+      proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ facebookID: profile.id });
@@ -40,7 +41,8 @@ passport.use(
     {
       clientID: googleClientID,
       clientSecret: googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ googleID: profile.id });
