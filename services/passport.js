@@ -20,6 +20,11 @@ passport.deserializeUser(async (id, done) => {
   done(null, user);
 });
 
+// Another alternative for the mismatch redirect would be to create a specif path
+// For example instead of using /auth/facebook/callback we would use => http://localhost:5000/auth/facebook/callback for Dev mode
+// and https://mydomain/auth/facebook/callback for Prod mode
+// We could add those in our .env file as environment variables
+
 passport.use(
   new FacebookStrategy(
     {

@@ -12,17 +12,17 @@ module.exports = app => {
 
   app.get(
     "/auth/facebook/callback",
-    passport.authenticate("facebook", { failureRedirect: "/login" }),
+    passport.authenticate("facebook", { failureRedirect: "/" }),
     (req, res) => {
-      res.send(req.user);
+      res.redirect("/surveys");
     }
   );
 
   app.get(
     "/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/login" }),
+    passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
-      res.send(req.user);
+      res.redirect("/surveys");
     }
   );
   app.get("/api/current_user", (req, res) => {
@@ -31,6 +31,6 @@ module.exports = app => {
 
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect("/");
   });
 };

@@ -1,0 +1,4 @@
+export const AUTH_START = "AUTH_START";
+export const FETCH_USER = "FETCH_USER";
+export const FETCH_USER_FAILED = "FETCH_USER_FAILED";
+export const FETCH_USER_SUCCEED = "FETCH_USER_SUCCEED";
