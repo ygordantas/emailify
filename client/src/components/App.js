@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 import Header from "./Header";
-import Landing from "../components/Landing";
+import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 class App extends Component {
   componentDidMount() {
@@ -12,6 +14,8 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
+        <Route path="/surveys/new" component={SurveyNew} />
+        <Route path="/surveys" component={Dashboard} />
         <Route path="/" component={Landing} />
         <Redirect to="/" />
       </Switch>
@@ -27,7 +31,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLogged: state.auth._id
+    isLogged: state.user._id
   };
 };
 
@@ -37,7 +41,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

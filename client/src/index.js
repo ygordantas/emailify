@@ -8,14 +8,18 @@ import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 // --
 // Reducers
-import authReducer from "./store/reducers/authReducer";
+import userReducer from "./store/reducers/userReducer";
 import surveysReducer from "./store/reducers/surveysReducer";
+import { reducer as formReducer } from "redux-form";
 // --
-import App from "./containers/App";
+import App from "./components/App";
+import axios from "axios";
+window.axios = axios;
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  surveys: surveysReducer
+  user: userReducer,
+  surveys: surveysReducer,
+  form: formReducer
 });
 
 let composeEnhancers =

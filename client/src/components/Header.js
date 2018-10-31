@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
 
@@ -59,9 +59,9 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    id: state.auth._id,
-    loading: state.auth.loading,
-    credits: state.auth.credits
+    id: state.user._id,
+    loading: state.user.loading,
+    credits: state.user.credits
   };
 };
 
